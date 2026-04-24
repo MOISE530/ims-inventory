@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device List - Airtel Inventory</title>
+    <link rel="stylesheet" href="/airtel-inventory/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>AIRTEL END-USER EQUIPMENT INVENTORY</h1>
+                <div class="user-info">
+                    <span>Welcome, <span th:text="${session.fullName}">User</span></span>
+                    <a href="/airtel-inventory/logout" class="logout-btn">Logout</a>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="page-header">
+                <div class="page-title">
+                    <h2>Device Inventory</h2>
+                    <p>Manage and view all registered devices</p>
+                </div>
+                <div class="page-actions">
+                    <a href="/airtel-inventory/devices/add" class="btn btn-primary">Add New Device</a>
+                    <a href="/airtel-inventory/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+                </div>
+            </div>
+            
+            <div th:if="${success}" class="alert alert-success">
+                <span th:text="${success}"></span>
+            </div>
+            
+            <div th:if="${error}" class="alert alert-error">
+                <span th:text="${error}"></span>
+            </div>
+            
+            <div class="search-section">
+                <form action="/airtel-inventory/devices/search" method="get" class="search-form">
+                    <input type="text" name="keyword" placeholder="Search by asset tag, serial number, brand, or model..." 
+                           th:value="${searchKeyword}" class="search-input">
+                    <button type="submit" class="search-btn">Search</button>
+                    <a href="/airtel-inventory/devices" class="btn btn-secondary">Clear</a>
+                </form>
+            </div>
+            
+            <div class="table-container">
+                <table class="devices-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Asset Tag</th>
+                            <th>Serial Number</th>
+                            <th>Device Type</th>
+                            <th>Brand</th>
+                            <th>Model</th>
+                            <th>Status</th>
+                            <th>Condition</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${#lists.isEmpty(devices)}">
+                            <td colspan="9" class="no-data">No devices found</td>
+                        </tr>
+                        <tr th:each="device : ${devices}">
+                            <td th:text="${device.id}">1</td>
+                            <td th:text="${device.assetTag}">LAP-001</td>
+                            <td th:text="${device.serialNumber}">SN123456</td>
+                            <td th:text="${device.deviceType}">Laptop</td>
+                            <td th:text="${device.brand}">Dell</td>
+                            <td th:text="${device.model}">XPS 15</td>
+                            <td>
+                                <span class="status-badge" 
+                                      th:classappend="${device.status == 'Available' ? 'status-available' : 
+                                                      device.status == 'Assigned' ? 'status-assigned' : 
+                                                      device.status == 'Lost' ? 'status-lost' : 'status-repair'}"
+                                      th:text="${device.status}">Available</span>
+                            </td>
+                            <td>
+                                <span class="condition-badge"
+                                      th:classappend="${device.deviceCondition == 'New' ? 'condition-new' : 
+                                                      device.deviceCondition == 'Good' ? 'condition-good' : 
+                                                      device.deviceCondition == 'Damaged' ? 'condition-damaged' : 'condition-repair'}"
+                                      th:text="${device.deviceCondition}">Good</span>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" 
+                                        th:onclick="'confirmDelete(' + ${device.id} + ')'">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="pagination-info" th:if="${not #lists.isEmpty(devices)}">
+                <p>Total devices: <span th:text="${#lists.size(devices)}">0</span></p>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        function confirmDelete(deviceId) {
+            if (confirm('Are you sure you want to delete this device? This action cannot be undone.')) {
+                window.location.href = '/airtel-inventory/devices/delete/' + deviceId;
+            }
+        }
+    </script>
+</body>
+</html>

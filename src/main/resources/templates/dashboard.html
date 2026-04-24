@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airtel Inventory Dashboard</title>
+    <link rel="stylesheet" href="/airtel-inventory/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>AIRTEL END-USER EQUIPMENT INVENTORY</h1>
+                <div class="user-info">
+                    <span>Welcome, <span th:text="${fullName}">User</span></span>
+                    <a href="/airtel-inventory/logout" class="logout-btn">Logout</a>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="dashboard-content">
+                <div class="welcome-section">
+                    <h2>Dashboard Overview</h2>
+                    <p>Manage and track Airtel end-user equipment inventory</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-content">
+                            <h3 th:text="${totalDevices}">0</h3>
+                            <p>Total Devices</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-content">
+                            <h3 th:text="${availableDevices}">0</h3>
+                            <p>Available Devices</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">📋</div>
+                        <div class="stat-content">
+                            <h3 th:text="${totalDevices - availableDevices}">0</h3>
+                            <p>Assigned Devices</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <h3 th:text="${#numbers.formatPercent(availableDevices / totalDevices, 0, 0)}">0%</h3>
+                            <p>Availability Rate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-grid">
+                    <a href="/airtel-inventory/devices" class="menu-card">
+                        <div class="menu-icon">📱</div>
+                        <h3>View Devices</h3>
+                        <p>Browse and search all inventory devices</p>
+                    </a>
+                    
+                    <a href="/airtel-inventory/devices/add" class="menu-card">
+                        <div class="menu-icon">➕</div>
+                        <h3>Register Device</h3>
+                        <p>Add new equipment to inventory</p>
+                    </a>
+                    
+                    <a href="/airtel-inventory/devices" class="menu-card">
+                        <div class="menu-icon">🔍</div>
+                        <h3>Search Inventory</h3>
+                        <p>Find specific devices quickly</p>
+                    </a>
+                    
+                    <a href="/airtel-inventory/devices" class="menu-card">
+                        <div class="menu-icon">📈</div>
+                        <h3>Reports</h3>
+                        <p>View inventory statistics</p>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

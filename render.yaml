@@ -1,0 +1,31 @@
+services:
+  # Type of service to deploy
+  type: web
+  
+  # Name of your service
+  name: airtel-inventory
+  
+  # Runtime environment
+  env: java
+  
+  # Build configuration
+  buildCommand: ./mvnw clean package -DskipTests
+  
+  # Start command
+  startCommand: java -jar target/airtel-inventory-1.0.0.jar
+  
+  # Health check path
+  healthCheckPath: /airtel-inventory/login
+  
+  # Environment variables
+  envVars:
+    - key: JAVA_VERSION
+      value: 17
+    - key: SPRING_PROFILES_ACTIVE
+      value: production
+
+databases:
+  # MySQL database for the application
+  - name: airtel-inventory-db
+    databaseName: airtel_inventory
+    user: airtel_user

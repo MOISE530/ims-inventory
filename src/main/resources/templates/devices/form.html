@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Device - Airtel Inventory</title>
+    <link rel="stylesheet" href="/airtel-inventory/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>AIRTEL END-USER EQUIPMENT INVENTORY</h1>
+                <div class="user-info">
+                    <span>Welcome, <span th:text="${session.fullName}">User</span></span>
+                    <a href="/airtel-inventory/logout" class="logout-btn">Logout</a>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="page-header">
+                <div class="page-title">
+                    <h2>Register New Device</h2>
+                    <p>Add a new device to the inventory system</p>
+                </div>
+                <div class="page-actions">
+                    <a href="/airtel-inventory/devices" class="btn btn-secondary">Back to Devices</a>
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <form action="/airtel-inventory/devices/add" method="post" class="device-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="assetTag">Asset Tag *</label>
+                            <input type="text" id="assetTag" name="assetTag" required 
+                                   placeholder="e.g., LAP-001">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="serialNumber">Serial Number</label>
+                            <input type="text" id="serialNumber" name="serialNumber" 
+                                   placeholder="e.g., SN123456789">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="deviceType">Device Type *</label>
+                            <select id="deviceType" name="deviceType" required>
+                                <option value="">Select Device Type</option>
+                                <option value="Laptop">Laptop</option>
+                                <option value="Desktop">Desktop</option>
+                                <option value="Mobile">Mobile</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="brand">Brand *</label>
+                            <input type="text" id="brand" name="brand" required 
+                                   placeholder="e.g., Dell, HP, Apple">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="model">Model *</label>
+                            <input type="text" id="model" name="model" required 
+                                   placeholder="e.g., XPS 15, iPhone 14">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deviceCondition">Condition</label>
+                            <select id="deviceCondition" name="deviceCondition">
+                                <option value="Good">Good</option>
+                                <option value="New">New</option>
+                                <option value="Damaged">Damaged</option>
+                                <option value="Repair">Repair</option>
+                                <option value="Retired">Retired</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="purchaseDate">Purchase Date</label>
+                            <input type="date" id="purchaseDate" name="purchaseDate">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="warrantyUntil">Warranty Until</label>
+                            <input type="date" id="warrantyUntil" name="warrantyUntil">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="specifications">Specifications</label>
+                        <textarea id="specifications" name="specifications" rows="4" 
+                                  placeholder="Enter device specifications (CPU, RAM, Storage, etc.)"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Register Device</button>
+                        <a href="/airtel-inventory/devices" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Set default dates
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const purchaseDate = document.getElementById('purchaseDate');
+            const warrantyUntil = document.getElementById('warrantyUntil');
+            
+            if (!purchaseDate.value) {
+                purchaseDate.value = today;
+            }
+            
+            // Set warranty date to 3 years from purchase date
+            purchaseDate.addEventListener('change', function() {
+                const purchase = new Date(this.value);
+                const warranty = new Date(purchase);
+                warranty.setFullYear(warranty.getFullYear() + 3);
+                warrantyUntil.value = warranty.toISOString().split('T')[0];
+            });
+        });
+    </script>
+</body>
+</html>
