@@ -1,5 +1,5 @@
 # Use OpenJDK 17 as base image
-FROM openjdk:17-jdk
+FROM eclipse-temurin:17-jdk-alpine
 
 # Set working directory
 WORKDIR /app
@@ -19,7 +19,7 @@ COPY src ./src
 RUN ./mvnw clean package -DskipTests
 
 # Runtime stage
-FROM openjdk:17-jre
+FROM eclipse-temurin:17-jre-alpine
 
 # Set working directory
 WORKDIR /app
