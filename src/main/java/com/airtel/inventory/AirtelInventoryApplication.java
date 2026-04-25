@@ -9,7 +9,7 @@ public class AirtelInventoryApplication {
     public static void main(String[] args) {
         SpringApplication.run(AirtelInventoryApplication.class, args);
         System.out.println("=================================");
-        System.out.println("AIRTEL INVENTORY SYSTEM STARTED");
+        System.out.println("IMS STARTED");
         System.out.println("Access URL: http://localhost:8081/airtel-inventory/login");
         System.out.println("Login Credentials:");
         System.out.println("Username: 24RP01839");

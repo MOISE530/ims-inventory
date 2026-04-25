@@ -1,7 +1,7 @@
 # Render Deployment Guide
-## Airtel Inventory Management System
+## IMS - Inventory Management System
 
-This guide provides step-by-step instructions for deploying the Airtel Inventory Management System to Render.
+This guide provides step-by-step instructions for deploying the IMS (Inventory Management System) to Render.
 
 ### 🚀 Prerequisites
 

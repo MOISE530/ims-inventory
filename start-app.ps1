@@ -1,6 +1,6 @@
-# Airtel Inventory System Startup Script
+# IMS - Inventory Management System Startup Script
 Write-Host "=================================" -ForegroundColor Green
-Write-Host "Starting Airtel Inventory System" -ForegroundColor Green
+Write-Host "Starting IMS - Inventory Management System" -ForegroundColor Green
 Write-Host "=================================" -ForegroundColor Green
 
 # Set Java Home

@@ -2,7 +2,7 @@
 
 ## Default Admin Credentials
 
-The Airtel Inventory Management System comes with pre-configured admin credentials:
+The IMS (Inventory Management System) comes with pre-configured admin credentials:
 
 - **Username**: `24RP01839`
 - **Password**: `24RP03971`

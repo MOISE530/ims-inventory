@@ -1,6 +1,6 @@
-# Airtel Inventory Management System
+# IMS - Inventory Management System
 
-A complete, production-ready inventory management system for Airtel to track end-user equipment including laptops, desktops, and mobile phones. Built with Spring Boot MVC architecture and MySQL database.
+A complete, production-ready inventory management system to track end-user equipment including laptops, desktops, and mobile phones. Built with Spring Boot MVC architecture and MySQL database.
 
 ## 🚀 Features
 

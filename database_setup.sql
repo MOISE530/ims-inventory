@@ -163,9 +163,8 @@ END //
 DELIMITER ;
 
 -- Display setup completion message
-SELECT 'Airtel Inventory Management System Database Setup Complete!' as message;
+SELECT 'IMS Database Setup Complete!' as message;
 SELECT 'Database: airtel_inventory' as database_name;
-SELECT 'Admin User: admin / admin123' as admin_credentials;
+SELECT 'Admin User: 24RP01839 / 24RP03971' as admin_credentials;
 SELECT 'Sample Employee: EMP001 - John Doe' as sample_employee;
-SELECT 'Sample Devices: 10 devices added for testing' as sample_devices;
 SELECT 'Access URL: http://localhost:8081/airtel-inventory/login' as access_url;

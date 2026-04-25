@@ -1,6 +1,6 @@
 @echo off
 echo =================================
-echo Starting Airtel Inventory System
+echo Starting IMS - Inventory Management System
 echo =================================
 
 REM Set Java Home

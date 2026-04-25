@@ -1,6 +1,9 @@
 # Use OpenJDK 17 JRE as base image
 FROM eclipse-temurin:17-jre-alpine
 
+# Install MySQL client for database connectivity
+RUN apk add --no-cache mysql-client
+
 # Set working directory
 WORKDIR /app
 

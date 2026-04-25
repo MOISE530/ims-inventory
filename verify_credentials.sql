@@ -17,7 +17,7 @@ SELECT username as 'Username', password as 'Password', full_name as 'Full Name',
 FROM users WHERE username = '24RP01839';
 
 -- Display login information
-SELECT 'Login Credentials:' as login_info;
+SELECT 'IMS Login Credentials:' as login_info;
 SELECT 'Username: 24RP01839' as username;
 SELECT 'Password: 24RP03971' as password;
 SELECT 'URL: http://localhost:8081/airtel-inventory/login' as access_url;

@@ -147,6 +147,6 @@ CREATE TRIGGER update_assignments_updated_at BEFORE UPDATE ON assignments
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 -- Display Setup Completion
-SELECT 'Airtel Inventory Database Setup Complete!' as status;
-SELECT 'Admin Credentials: admin / admin123' as credentials;
+SELECT 'IMS Database Setup Complete!' as status;
+SELECT 'Admin Credentials: 24RP01839 / 24RP03971' as credentials;
 SELECT 'Ready for Render Deployment' as deployment_status;

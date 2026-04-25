@@ -3,10 +3,14 @@ services:
   type: web
   
   # Name of your service
-  name: airtel-inventory
+  name: ims
   
   # Runtime environment
   env: java
+  
+  # Database type
+  database:
+    type: mysql
   
   # Build configuration
   buildCommand: ./mvnw clean package -DskipTests

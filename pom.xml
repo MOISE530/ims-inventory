@@ -15,8 +15,8 @@
     <groupId>com.airtel</groupId>
     <artifactId>airtel-inventory</artifactId>
     <version>1.0.0</version>
-    <name>Airtel Inventory Management System</name>
-    <description>End-User Equipment Inventory Management System</description>
+    <name>IMS</name>
+    <description>Inventory Management System</description>
 
     <properties>
         <java.version>17</java.version>
