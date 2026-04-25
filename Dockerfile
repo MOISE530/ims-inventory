@@ -1,31 +1,11 @@
-# Use OpenJDK 17 as base image
-FROM eclipse-temurin:17-jdk-alpine
-
-# Set working directory
-WORKDIR /app
-
-# Copy Maven wrapper and pom.xml
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
-
-# Download Maven dependencies
-RUN ./mvnw dependency:go-offline
-
-# Copy source code
-COPY src ./src
-
-# Build the application
-RUN ./mvnw clean package -DskipTests
-
-# Runtime stage
+# Use OpenJDK 17 JRE as base image
 FROM eclipse-temurin:17-jre-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy the built JAR file from the build stage
-COPY --from=0 /app/target/airtel-inventory-1.0.0.jar app.jar
+# Copy the pre-built JAR file
+COPY target/airtel-inventory-1.0.0.jar app.jar
 
 # Expose port
 EXPOSE 8080
